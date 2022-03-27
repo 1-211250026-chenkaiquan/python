@@ -1,0 +1,109 @@
+1.输入输出
+x = float(input())
+if x <= 15:
+    y = 4*x/3
+else:
+    y = 2.5*x-17.5
+print("{:.2f}".format(y))
+
+
+2.for循环
+（1）
+for i in [1, 2, 3, 4]:
+    print(i, end='')
+
+
+# 借用range生成一个列表，第一位表示初始，第二位表示终止但不包括其本身，第三位为步伐
+m = list(range(10))
+print(m)
+n = list(range(1, 10))
+print(n)
+q = list(range(1, 10, 4))
+print(q)
+p = list(range(0, -10, -1))
+print(p)
+
+
+# 计算n!
+n = int(input())
+f = 1
+l = list(range(1, n+1))
+for i in l:
+    f = f * i
+print(f)
+
+3.列表
+# 列表进行加法、乘法、比较、索引、切片等运算
+m = [1, 2, 3] + ['python', 'java', 'c++']
+print(m)
+
+n = [1] * 10
+print(n)
+
+print([1, 2, 3] < [2, 3, 4])
+
+
+weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+print(weekdays[2])
+
+# 列表推导式
+n1 = [2*number for number in [1, 2, 3, 4, 5]]
+print(n1)
+n2 = [number for number in range(1, 8)]
+print(n2)
+n3 = [number for number in range(1, 8) if number % 2 == 1]
+print(n3)
+n4 = [int('6' * i) for i in range(1, 10)]
+print(n4)
+n5 = sum([1 / i if i % 2 == 1 else -1 / i for i in range(1, 10)])
+print(n5)
+
+
+
+lower, upper = input().split()
+lower, upper = int(lower), int(upper)
+for i in range(lower, upper + 1, 2):
+    print(i, "{:.1f}".format(5*(i-32)/9))
+
+# 列表推导式的简洁性
+n = int(input())
+l = sum(i / (2 * i - 1) if i % 2 == 1 else -1 * i / (2 * i - 1) for i in range(1, n + 1))
+print("{:.3f}".format(l))
+
+
+# format的相关应用
+x = 3.14159
+y = 2 * x * 3
+print("{0:.2f} {0:.1f} {1:.2f}".format(x, y))
+# 0和1表示format函数中的第几个参数，.2f,.1f表示小数点后保留的位数
+# 注意此处保留位数采取的是四舍五入
+
+
+# 列表的元素可以是其他列表
+# 序列：字符串+列表
+# 编号由0开始从左往右依次增大，还可以从右向左，由-1开始减小
+s1 = '123'
+s2 = [4, 5, 6]
+print(s1[0], s2[0])
+
+
+4.元组（不可变）
+
+
+
+
+5.字符串
+# python中字符串是不可变对象，不能用下标赋值的方法改变字符串中的元素
+# 可以采用将字符串中单个字符储存在列表中，改变列表中元素再将其转化为字符串以实现目的
+# 以下面这段字符串冒泡排序为例
+def sort(str0):
+    list1 = []
+    for i in str0:
+        list1.append(i)
+        # 感觉好像被耍了，直接list1 = list(str0)就可以实现了
+    for i in range(len(list1) - 1):
+        for j in range(len(list1) - i - 1):
+            if list1[j] > list1[j + 1]:
+                list1[j], list1[j + 1] = list1[j + 1], list1[j]
+    str0 = "".join(list1)
+    return str0
